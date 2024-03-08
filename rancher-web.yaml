@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  rancher:
+    restart: unless-stopped
+    container_name: rancher-web
+    volumes:
+      - /home/pykekaisora/Docker/rancher-web/data:/var/lib/rancher
+    ports:
+      - 801:80
+      - 4431:443
+    privileged: true
+    image: rancher/rancher:latest
+    command: --no-cacerts
+networks: {}
