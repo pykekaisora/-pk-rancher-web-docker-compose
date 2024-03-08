@@ -1,0 +1,11 @@
+version: "3.3"
+services:
+  rancher:
+    restart: unless-stopped
+    container_name: rancher-web
+    volumes:
+      - <path to clone>/data:/var/lib/rancher
+    network_mode: host
+    privileged: true
+    image: rancher/rancher:latest
+    command: --no-cacerts

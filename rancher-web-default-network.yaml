@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  rancher:
+    restart: unless-stopped
+    container_name: rancher-web
+    volumes:
+      - <path to clone>/data:/var/lib/rancher
+    networks:
+    - rancher-connector
+    ports:
+      - 801:80
+      - 4431:443
+      - 221:22
+      - 23761:2376
+      - 64431:6443
+    privileged: true
+    image: rancher/rancher:latest
+    command: --no-cacerts
+networks:
+  rancher-connector:
+    name: rancher-connector
+    driver: bridge
